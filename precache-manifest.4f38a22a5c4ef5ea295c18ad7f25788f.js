@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/erc721-metadata/index.html"
   },
   {
-    "revision": "402e78fa65a75a283919",
+    "revision": "7a13a64049181abfd0fb",
     "url": "/erc721-metadata/static/css/2.0996cbbd.chunk.css"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/erc721-metadata/static/css/main.85a1e678.chunk.css"
   },
   {
-    "revision": "402e78fa65a75a283919",
+    "revision": "7a13a64049181abfd0fb",
     "url": "/erc721-metadata/static/js/2.c9f4f4a7.chunk.js"
   },
   {
