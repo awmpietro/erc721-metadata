@@ -2,7 +2,6 @@
   "name": "contract-viewer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://awmpietro.github.io/erc721-metadata",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
@@ -21,7 +20,7 @@
     "react-redux": "^7.1.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.3.0",
+    "react-scripts": "3.4.1",
     "reactstrap": "^7.1.0",
     "redux": "^4.0.4",
     "redux-multi": "^0.1.12",
