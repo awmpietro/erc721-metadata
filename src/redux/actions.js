@@ -1,5 +1,6 @@
 import axios from "axios";
 import { GET_INTERFACE, CALL, LOADING } from "./actionTypes";
+import { errorHandler } from "./utils";
 
 export const getInterface = data => {
   return dispatch => {
@@ -33,7 +34,10 @@ export const call = (address, tokenId) => {
         dispatch({ type: CALL, payload: { data: data, loading: false } });
       })
       .catch(error => {
-        dispatch({ type: CALL, payload: { data: error.message } });
+        dispatch({
+          type: CALL,
+          payload: { data: errorHandler(error) },
+        });
       });
   };
 };
