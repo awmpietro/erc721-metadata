@@ -2,19 +2,19 @@ import axios from "axios";
 import { GET_INTERFACE, CALL, LOADING } from "./actionTypes";
 import { errorHandler } from "../utils";
 
-export const getInterface = data => {
-  return dispatch => {
+export const getInterface = (data) => {
+  return (dispatch) => {
     axios
       .get(`${process.env.REACT_APP_URL}/contracts/getInterface`)
-      .then(response => {
+      .then((response) => {
         dispatch({ type: GET_INTERFACE, payload: { itf: response.data } });
       })
-      .catch(error => {});
+      .catch((error) => {});
   };
 };
 
-export const call = (address, tokenId) => {
-  return async dispatch => {
+export const call = (address, tokenId, network) => {
+  return async (dispatch) => {
     try {
       handleLoading(true);
       const response = await axios.post(
@@ -23,6 +23,7 @@ export const call = (address, tokenId) => {
           contractAddress: address,
           funcName: "tokenURI",
           tokenId: tokenId,
+          network,
         }
       );
       const data = {};
@@ -47,8 +48,8 @@ export const call = (address, tokenId) => {
   };
 };
 
-export const handleLoading = isLoading => {
-  return dispatch => {
+export const handleLoading = (isLoading) => {
+  return (dispatch) => {
     dispatch({ type: LOADING, payload: { loading: isLoading } });
   };
 };

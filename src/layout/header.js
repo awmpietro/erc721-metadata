@@ -1,30 +1,24 @@
-import React, { Component } from 'react';
-import { Link} from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { bindActionCreators } from 'redux';
-// import { logout } from '../redux/actions';
+import { bindActionCreators } from "redux";
 
 class Header extends Component {
-
-    // logout = () => {
-    //     return this.props.logout();
-    // }
-
-    render() {
-        return (
-            <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-                <Link to="/contracts/erc721" className="navbar-brand col-sm-3 col-md-2 mr-0">Get ERC721 Token Metadata</Link>
-                {/* <ul className="navbar-nav px-3">
-                    <li className="nav-item text-nowrap">
-                        <Link to="#" className="nav-link">Log out</Link>
-                    </li>
-                </ul> */}
-            </nav>
-        );
-    }
+  render() {
+    return (
+      <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <Link
+          to="/contracts/erc721"
+          className="navbar-brand col-sm-3 col-md-2 mr-0"
+        >
+          ERC-721 Token Metadata
+        </Link>
+      </nav>
+    );
+  }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators( {}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
-export default connect(null, mapDispatchToProps)(Header)
+export default connect(null, mapDispatchToProps)(Header);

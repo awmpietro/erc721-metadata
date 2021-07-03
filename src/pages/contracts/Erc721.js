@@ -13,15 +13,15 @@ class Erc721 extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.showMetadata = this.showMetadata.bind(this);
     this.checkUrl = this.checkUrl.bind(this);
-    this.state = { address: "", tokenId: "" };
+    this.state = { address: "", tokenId: "", network: "" };
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.call(this.state.address, this.state.tokenId);
+    this.props.call(this.state.address, this.state.tokenId, this.state.network);
   }
 
-  showMetadata = item => {
+  showMetadata = (item) => {
     const metadata = item.metadata;
     if (typeof metadata === "object" && metadata !== null) {
       const keys = Object.keys(metadata);
@@ -39,7 +39,7 @@ class Erc721 extends Component {
     return this.checkUrl(item.metadata);
   };
 
-  checkUrl = str => {
+  checkUrl = (str) => {
     if (validURL(str)) {
       return (
         <a href={str} target="_blank" rel="noopener noreferrer">
@@ -59,7 +59,7 @@ class Erc721 extends Component {
       <>
         <main role="main" className="col-md-12 ml-sm-auto col-lg-12 pt-3 px-4">
           <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 className="h2">Get ERC721 Token Metadata</h1>
+            <h1 className="h2">ERC-721 Token Metadata</h1>
           </div>
           <div className="card">
             <div className="card-body">
@@ -67,7 +67,7 @@ class Erc721 extends Component {
                 <Col md={12} lg={12} xs={12} sm={12}>
                   <form onSubmit={this.handleSubmit}>
                     <Row>
-                      <Col md={6} lg={6} xs={12} sm={12}>
+                      <Col md={4} lg={4} xs={12} sm={12}>
                         <div className="form-group">
                           <input
                             name=""
@@ -75,14 +75,15 @@ class Erc721 extends Component {
                             type="text"
                             className="form-control"
                             value={this.state.address}
-                            onChange={e =>
+                            onChange={(e) =>
                               this.setState({ address: e.target.value })
                             }
                             required
                           />
                         </div>
                       </Col>
-                      <Col md={6} lg={6} xs={12} sm={12}>
+
+                      <Col md={4} lg={4} xs={12} sm={12}>
                         <div className="form-group">
                           <input
                             name=""
@@ -90,11 +91,38 @@ class Erc721 extends Component {
                             type="text"
                             className="form-control"
                             value={this.state.tokenId}
-                            onChange={e =>
+                            onChange={(e) =>
                               this.setState({ tokenId: e.target.value })
                             }
                             required
                           />
+                        </div>
+                      </Col>
+                      <Col md={4} lg={4} xs={12} sm={12}>
+                        <div className="form-group">
+                          <select
+                            name=""
+                            placeholder="Select Network *"
+                            className="form-control"
+                            value={this.state.network}
+                            onChange={(e) =>
+                              this.setState({ network: e.target.value })
+                            }
+                            required
+                          >
+                            <option value="ethereum-main-net">
+                              Ethereum Mainnet
+                            </option>
+                            <option value="ethereum-test-net">
+                              Ethereum Testnet (Ropsten)
+                            </option>
+                            <option value="huobi-main-net">
+                              Huobi Heco Chain Mainnet
+                            </option>
+                            <option value="huobi-test-net">
+                              Huobi Heco Chain Testnet
+                            </option>
+                          </select>
                         </div>
                       </Col>
                       <Col md={12} lg={12} xs={12} sm={12}>
@@ -225,7 +253,7 @@ class Erc721 extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.contracts.data,
   loading: state.contracts.loading,
 });
@@ -240,6 +268,6 @@ const footerStyle = {
   backgroundColor: "#f5f5f5",
 };
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ call, handleLoading }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(Erc721);
