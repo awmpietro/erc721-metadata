@@ -13,7 +13,7 @@
     "jquery": "^3.4.1",
     "jsonp": "^0.2.1",
     "jwt-decode": "^2.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "^16.12.0",
     "react-bs-datatable": "^2.0.4",
     "react-data-table-component": "^1.7.4",
